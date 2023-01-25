@@ -1,0 +1,319 @@
+//更新内容：新增“三枪“”和“大防”
+#include<iostream>
+#include<time.h>//调用时间/概率函数 
+using namespace std;
+struct ZD {//ZD1代表人；ZD2代表电脑 
+	int n;//豆数
+	int t;//本回合行为 
+};
+int main() {
+	printf("【发育】\n攒豆：0（价格：免费）\n\n【攻击】\n枪：1（价格：1能量豆）\n双枪：2（价格：2能量豆\n三枪：3（价格：3能量豆）\n\n【防御】\n小防：4（价格：免费）\n中防：5（价格：免费）\n大防：6（价格：免费）\n\n");
+	srand((unsigned)time(NULL));//调用时间函数（随机）
+	struct ZD ZD1;//人 
+	struct ZD ZD2;//电脑 
+	ZD1.n = 0;
+	ZD2.n = 0;
+	while (true) {
+		int k = rand() % 100 + 1;
+		cin >> ZD1.t;
+		int& m = ZD2.n;//懒得写“ZD2.n”了 
+		if (ZD1.n == 0 && m == 0) {
+			ZD2.t = 0;
+		}
+		if (ZD1.n == 0 && m == 1) {
+			if (k < 60)ZD2.t = 0;
+			else ZD2.t = 1;
+		}
+		if (ZD1.n == 0 && m == 2) {
+			if (k < 35)ZD2.t = 0;
+			else if (k < 80)ZD2.t = 1;
+			else ZD2.t = 2;
+		}
+		if (ZD1.n == 0 && m == 3) {
+			if (k < 25)ZD2.t = 0;
+			else if (k < 60)ZD2.t = 1;
+			else if (k < 80)ZD2.t = 2;
+			else ZD2.t = 3;
+		}
+		if (ZD1.n == 0 && m > 3) {
+			if (k < 20)ZD2.t = 0;
+			else if (k < 50)ZD2.t = 1;
+			else if (k < 80)ZD2.t = 2;
+			else ZD2.t = 3;
+		}//人有0个豆 
+		if (ZD1.n == 1 && m == 0) {
+			if (k < 60)ZD2.t = 0;
+			else ZD2.t = 4;
+		}
+		if (ZD1.n == 1 && m == 1) {
+			if (k < 30)ZD2.t = 0;
+			else if (k < 65)ZD2.t = 1;
+			else ZD2.t = 4;
+		}
+		if (ZD1.n == 1 && m == 2) {
+			if (k < 25)ZD2.t = 0;
+			else if (k < 40)ZD2.t = 1;
+			else if (k < 70)ZD2.t = 2;
+			else ZD2.t = 4;
+		}
+		if (ZD1.n == 1 && m == 3) {
+			if (k < 25)ZD2.t = 0;
+			else if (k < 50)ZD2.t = 1;
+			else if (k < 70)ZD2.t = 2;
+			else if (k < 80)ZD2.t = 3;
+			else ZD2.t = 4;
+		}
+		if (ZD1.n == 1 && m > 3) {
+			if (k < 20)ZD2.t = 0;
+			else if (k < 50)ZD2.t = 1;
+			else if (k < 80)ZD2.t = 2;
+			else if (k < 90)ZD2.t = 3;
+			else ZD2.t = 4;
+		}//人有1个豆 
+		if (ZD1.n == 2 && m == 0) {
+			if (k < 30)ZD2.t = 0;
+			else if (k < 65)ZD2.t = 4;
+			else ZD2.t = 5;
+		}
+		if (ZD1.n == 2 && m == 1) {
+			if (k < 25)ZD2.t = 0;
+			else if (k < 40)ZD2.t = 1;
+			else if (k < 70)ZD2.t = 4;
+			else ZD2.t = 5;
+		}
+		if (ZD1.n == 2 && m == 2) {
+			if (k < 15)ZD2.t = 0;
+			else if (k < 35)ZD2.t = 1;
+			else if (k < 55)ZD2.t = 2;
+			else if (k < 80)ZD2.t = 4;
+			else ZD2.t = 5;
+		}
+		if (ZD1.n == 2 && m == 3) {
+			if (k < 10)ZD2.t = 0;
+			else if (k < 25)ZD2.t = 1;
+			else if (k < 50)ZD2.t = 2;
+			else if (k < 65)ZD2.t = 3;
+			else if (k < 80)ZD2.t = 4;
+			else ZD2.t = 5;
+		}
+		if (ZD1.n == 2 && m == 4) {
+			if (k < 5)ZD2.t = 0;
+			else if (k < 20)ZD2.t = 1;
+			else if (k < 50)ZD2.t = 2;
+			else if (k < 75)ZD2.t = 3;
+			else if (k < 85)ZD2.t = 4;
+			else ZD2.t = 5;
+		}
+		if (ZD1.n == 2 && m > 4) {
+			if (k < 5)ZD2.t = 0;
+			else if (k < 20)ZD2.t = 1;
+			else if (k < 50)ZD2.t = 2;
+			else if (k < 75)ZD2.t = 3;
+			else if (k < 85)ZD2.t = 4;
+			else ZD2.t = 5;
+		}//人有2个豆
+		if (ZD1.n == 3 && m == 0) {
+			if (k < 25)ZD2.t = 0;
+			else if (k < 50)ZD2.t = 4;
+			else if (k < 75)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n == 3 && m == 1) {
+			if (k < 20)ZD2.t = 0;
+			else if (k < 30)ZD2.t = 1;
+			else if (k < 50)ZD2.t = 4;
+			else if (k < 80)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n == 3 && m == 2) {
+			if (k < 10)ZD2.t = 0;
+			else if (k < 20)ZD2.t = 1;
+			else if (k < 45)ZD2.t = 2;
+			else if (k < 65)ZD2.t = 4;
+			else if (k < 85)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n == 3 && m == 3) {
+			if (k < 10)ZD2.t = 0;
+			else if (k < 25)ZD2.t = 1;
+			else if (k < 40)ZD2.t = 2;
+			else if (k < 55)ZD2.t = 3;
+			else if (k < 70)ZD2.t = 4;
+			else if (k < 85)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n == 3 && m == 4) {
+			if (k < 5)ZD2.t = 0;
+			else if (k < 20)ZD2.t = 1;
+			else if (k < 40)ZD2.t = 2;
+			else if (k < 70)ZD2.t = 3;
+			else if (k < 80)ZD2.t = 4;
+			else if (k < 90)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n == 3 && m == 5) {
+			if (k < 5)ZD2.t = 0;
+			else if (k < 15)ZD2.t = 1;
+			else if (k < 40)ZD2.t = 2;
+			else if (k < 80)ZD2.t = 3;
+			else if (k < 85)ZD2.t = 4;
+			else if (k < 90)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n == 3 && m > 5) {
+			if (k < 5)ZD2.t = 0;
+			else if (k < 15)ZD2.t = 1;
+			else if (k < 25)ZD2.t = 2;
+			else if (k < 80)ZD2.t = 3;
+			else if (k < 85)ZD2.t = 4;
+			else if (k < 90)ZD2.t = 5;
+			else ZD2.t = 6;
+		}//人有3个豆
+		if (ZD1.n > 3 && m == 0) {
+			if (k < 20)ZD2.t = 0;
+			else if (k < 60)ZD2.t = 4;
+			else if (k < 85)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n > 3 && m == 1) {
+			if (k < 20)ZD2.t = 0;
+			else if (k < 30)ZD2.t = 1;
+			else if (k < 55)ZD2.t = 4;
+			else if (k < 80)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n > 3 && m == 2) {
+			if (k < 10)ZD2.t = 0;
+			else if (k < 25)ZD2.t = 1;
+			else if (k < 40)ZD2.t = 2;
+			else if (k < 50)ZD2.t = 4;
+			else if (k < 80)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n > 3 && m == 3) {
+			if (k < 10)ZD2.t = 0;
+			else if (k < 20)ZD2.t = 1;
+			else if (k < 30)ZD2.t = 2;
+			else if (k < 60)ZD2.t = 3;
+			else if (k < 70)ZD2.t = 4; 
+			else if (k < 80)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.n > 3 && m > 3) {
+			if (k < 5)ZD2.t = 0;
+			else if (k < 15)ZD2.t = 1;
+			else if (k < 25)ZD2.t = 2;
+			else if (k < 65)ZD2.t = 3;
+			else if (k < 70)ZD2.t = 4;
+			else if (k < 75)ZD2.t = 5;
+			else ZD2.t = 6;
+		}
+		if (ZD1.t == 0)ZD1.n++;
+		else if (ZD1.t == 1)ZD1.n--;
+		else if (ZD1.t == 2)ZD1.n -= 2;
+		else if (ZD1.t == 3)ZD1.n -= 3;
+		if (ZD2.t == 0)m++;
+		else if (ZD2.t == 1)m--;
+		else if (ZD2.t == 2)m -= 2;
+		else if (ZD2.t == 3)m -= 3;
+		cout << "电脑出招：" << ZD2.t << " " << "我方经济：" << ZD1.n << " " << "敌方经济：" << m << endl;
+		if (ZD1.n < 0)cout << "\n你崩了";
+		else if (ZD1.t == 0 && ZD2.t == 1) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 0 && ZD2.t == 2) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 0 && ZD2.t == 3) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 1 && ZD2.t == 2) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 1 && ZD2.t == 3) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 2 && ZD2.t == 3) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 4 && ZD2.t == 2) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 4 && ZD2.t == 3) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 5 && ZD2.t == 1) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 5 && ZD2.t == 3) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 6 && ZD2.t == 1) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 6 && ZD2.t == 2) {
+			cout << "\n你失败了";
+			break;
+		}
+		else if (ZD1.t == 1 && ZD2.t == 0) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 2 && ZD2.t == 0) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 3 && ZD2.t == 0) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 2 && ZD2.t == 1) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 3 && ZD2.t == 1) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 3 && ZD2.t == 2) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 2 && ZD2.t == 4) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 3 && ZD2.t == 4) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 1 && ZD2.t == 5) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 3 && ZD2.t == 5) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 1 && ZD2.t == 6) {
+			cout << "\n胜利";
+			break;
+		}
+		else if (ZD1.t == 2 && ZD2.t == 6) {
+			cout << "\n胜利";
+			break;
+		}
+	}
+	return 0;
+}
